@@ -1,0 +1,189 @@
+\documentclass[man]{apa7}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{longtable}
+\pagestyle{plain}
+\shorttitle{}
+
+% Portada
+\title{Workshop \#1}
+\author{Sergio Andres Diaz Cuervo - 20251020166  \\ Johan Esmit Sichacá González - 20242020313 \\ john Mario jimenez Becerra - 20251020047}
+\affiliation{Professor: Carlos Andres Sierra Virguez \\[0.5cm] Subject: OOP}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Functional Requirements}
+
+\subsection{User Management (The program must:)}
+\begin{itemize}
+    \item Be able to register new users.
+    \item Be able to log in registered users.
+    \item Allow modification of user data.
+\end{itemize}
+
+\subsection{Activity and Event Registration (The program must:)}
+\begin{itemize}
+    \item Allow the user to create an event.
+    \item Allow the user to set: event date, name, and a brief description.
+    \item Display the created event in their calendar.
+    \item Allow the user to create a task list.
+    \item Allow the user to set: task name, estimated completion date, subject or topic of the task, and its status (completed or not).
+    \item Display pending tasks as “Tasks” in their calendar.
+\end{itemize}
+
+\subsection{Event Planning}
+Upon registration, the user has access to the creation of 2 calendars:
+\begin{itemize}
+    \item The first titled “Personal” (only contains their created events).
+    \item The second shows only the tasks they created, but in the calendar, as “pending.”
+\end{itemize}
+
+\subsection{Database Connectivity}
+\begin{itemize}
+    \item The user can have more than one task list and can choose which one to import into their calendar (only one can be viewed at a time).
+    \item When the user registers an event in the calendar, it must also be viewable outside of it, in the events section.
+\end{itemize}
+
+\subsection{Data Sharing}
+\begin{itemize}
+    \item The user can share their calendars with other people.
+    \item When sharing a calendar, the receiving users can only view it; they cannot modify it.
+\end{itemize}
+
+\section{Non-Functional Requirements}
+
+\subsection{Performance}
+\begin{itemize}
+    \item The application must support at least 5 users simultaneously.
+    \item Event creation must take less than 5 seconds.
+    \item Task list creation must take less than 5 seconds.
+    \item Importing a database must not take more than 10 seconds.
+\end{itemize}
+
+\subsection{Security}
+\begin{itemize}
+    \item All user passwords must remain confidential.
+    \item Usernames will only be visible when the user decides to share one of their calendars.
+\end{itemize}
+
+\subsection{Availability}
+The software must be available 99\% of the time; that is, it should remain online at all times.
+
+\subsection{Usability}
+\begin{itemize}
+    \item The system interface must be intuitive and allow a new user to design their task list or calendar easily.
+    \item Calendars must be in a simple format, without complicating the reading or understanding of dates or data.
+    \item Lists must be as dynamic as possible, avoiding excessive information and visual overload.
+    \item The color scheme of the interface must be optimal to prevent user eye strain.
+\end{itemize}
+
+\subsection{Maintainability}
+\begin{itemize}
+    \item The code must be documented according to the organization’s standards.
+    \item The system must be designed in a modular way to facilitate future updates.
+\end{itemize}
+
+\section{User Stories}
+\begin{longtable}{|p{3cm}|p{2cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Title} & \textbf{Priority} & \textbf{User Story} & \textbf{Acceptance Criteria} \\
+\hline
+User Register & High & As a new user I want to register in the application so that I can start making my activities. & Given I enter for the first time, when I fill in the form and submit it, then my account is created. \\
+\hline
+Login & High & As a user I want to log in with my credentials so that I can access my calendars and tasks. & Given I already have an account, when I enter a valid email and password, then I access the application. \\
+\hline
+Event Creation & High & As a user I want to create an event with date, name, and description so that I can organize my activities. & Given I am in my calendar, when I click “create event” and fill in the data, then the event appears on the selected date. \\
+\hline
+Task List within Event & High & As a user I want to create a task list within an event so that I can track specific subtasks. & Given I already have an event created, when I add tasks and statuses (pending/done), then I see the progress inside the event. \\
+\hline
+Pending Tasks View & High & As a user I want to see all my pending tasks in a single list so that I know what I still need to do. & Given I have multiple events with tasks, when I open the “pending” view, then the list appears organized by date. \\
+\hline
+Event Modification & High & As a user I want to edit the name or date of an event so that I can fix it without creating a new one. & Given I have an existing event, when I change its data and save, then the event is updated. \\
+\hline
+Share Calendar & Low & As a user I want to share my calendar with other users so that they can view my activities. & Given I already have events created, when I select “share” and enter an email, then the other user gets read-only access. \\
+\hline
+\end{longtable}
+
+\section{CRC Cards}
+\begin{longtable}{|p{3cm}|p{7cm}|p{6cm}|}
+\hline
+\textbf{Class} & \textbf{Responsibilities} & \textbf{Collaborators} \\
+\hline
+User & Log in, Sign in; Assign tasks; Store profile data; Manage preferences & Task, Notification, Progress statistic, Check list, Register \\
+\hline
+Notification & Notify the user; Inform about the expiration of an event & User, Task, Calendar \\
+\hline
+Progress Statistic & Create daily, weekly and monthly statistics; Show tasks missing progress; Show task percentage completed & User, Task, Check list, Calendar, Notification \\
+\hline
+Check List & Show the status of a task's completion; Show the task’s specific data (date, category, name, etc.); Mark tasks as completed & User, Task, Progress Statistic \\
+\hline
+Calendar & Show tasks/events general data in daily, weekly, and monthly view; Synchronize with time zone; Update in real time & User, Task, Check list, Notification, Progress statistic \\
+\hline
+Tasks & Save all the information about a task; Allow to edit or eliminate a task; Define recurrence if repetitive & User, Task, Notifications, Progress statistics \\
+\hline
+Register & Receive and validate data from registration form; Create the User entity in database & User, Notification \\
+\hline
+\end{longtable}
+
+\section{Mockups}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{1.jpg}
+\caption{Mockup 1}
+
+\vspace{1cm}
+
+\includegraphics[width=0.8\linewidth]{2.jpg}
+\caption{Mockup 2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{3.jpg}
+\caption{Mockup 3}
+
+\vspace{1cm}
+
+\includegraphics[width=0.8\linewidth]{4.jpg}
+\caption{Mockup 4}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{5.jpg}
+\caption{Mockup 5}
+
+\vspace{1cm}
+
+\includegraphics[width=0.8\linewidth]{6.jpg}
+\caption{Mockup 6}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{7.jpg}
+\caption{Mockup 7}
+
+\vspace{1cm}
+
+\includegraphics[width=0.8\linewidth]{8.jpg}
+\caption{Mockup 8}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{9.jpg}
+\caption{Mockup 9}
+
+\vspace{1cm}
+
+\includegraphics[width=0.8\linewidth]{10.jpg}
+\caption{Mockup 10}
+\end{figure}
+
+\end{document}
