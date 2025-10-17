@@ -1,0 +1,185 @@
+\documentclass[man]{apa7}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{geometry}
+\geometry{margin=1in}
+\setstretch{1.5}
+
+\title{Workshop #2}
+\shorttitle{Workshop 2}
+\author{Sergio Andrés Díaz Cuervo – 20251020166 \ Johan Esmit Sichacá González – 20242020313 \ John Mario Jiménez Becerra – 20251020047}
+\affiliation{Professor: Carlos Andres Sierra Virguez \ Subject: Object-Oriented Programming (OOP)}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+
+\section{Introduction}
+Within both academic and business contexts, it is always of vital importance to maintain a high level of organization regarding events and tasks. It is no secret that, due to the many daily responsibilities, people often completely forget about events or tasks that were planned long ago. Therefore, an application capable of solving this issue would represent a significant improvement in both cases.
+
+For this reason, \textbf{TRACKTIVITY} was created, an application designed to be the personal assistant or planner for anyone, from high school or university students to business professionals who need to remember or plan many things at once. Within this app, the user, after registering, has access to two calendars where they can create both events and tasks, as well as share their active calendars with other users. In the app’s ecosystem, the user will find dynamic and easy-to-use interfaces, making them feel in a useful and productive space.
+
+\section{Chapter I: Requirements}
+
+\subsection{Functional Requirements}
+\subsubsection{User Management}
+\begin{itemize}
+\item New users can create an account and register.
+\item Registered users can log in and be remembered by the application.
+\item Users can modify their profile information, including name and profile picture.
+\end{itemize}
+
+\subsubsection{Activity and Event Registration}
+\begin{itemize}
+\item Users can create events (up to 15 per day).
+\item Each event includes:
+\begin{itemize}
+\item Event date
+\item Event name
+\item Brief description (optional)
+\item Specific time or time range
+\item Task duration (hours and minutes)
+\end{itemize}
+\item Tasks include:
+\begin{itemize}
+\item Task name
+\item Due date
+\item Category (subject or topic)
+\item Status (Completed or Incomplete)
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Event Planning}
+\begin{itemize}
+\item Users can create up to two calendars:
+\begin{enumerate}
+\item Personal calendar
+\item Tasks calendar
+\end{enumerate}
+\item Users can also view a mixed calendar showing both.
+\end{itemize}
+
+\subsubsection{Database Connectivity}
+\begin{itemize}
+\item Multiple task lists can be created and imported.
+\item Created events appear in both the calendar and events section.
+\end{itemize}
+
+\subsubsection{Data Sharing}
+\begin{itemize}
+\item Users can share their calendars for viewing only.
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Performance}
+\begin{itemize}
+\item The app supports at least 18 concurrent users.
+\item Response time: 2–3 seconds for events/tasks.
+\item Database import time: up to 10 seconds.
+\end{itemize}
+
+\subsubsection{Security}
+\begin{itemize}
+\item Passwords are private and encrypted.
+\item Usernames are visible only to shared users.
+\end{itemize}
+
+\subsubsection{Availability}
+\begin{itemize}
+\item Expected uptime: 99%.
+\end{itemize}
+
+\subsubsection{Usability}
+\begin{itemize}
+\item Interface must be intuitive and simple.
+\item Calendars should be easy to read and dynamic.
+\end{itemize}
+
+\subsubsection{Maintainability}
+\begin{itemize}
+\item Code must be modular and documented.
+\end{itemize}
+
+\section{User Stories}
+\subsection*{Example: User Register}
+\textbf{Priority:} High \
+\textbf{Estimate:} 20/10/2025
+
+\textbf{As a new user} I want to register in the application so that I can start making my activities.
+
+\textbf{Acceptance Criteria:}
+\begin{itemize}
+\item Given that the user accesses the app for the first time,
+\item When they complete and submit registration,
+\item Then they receive a confirmation and access the login screen.
+\end{itemize}
+
+% (Continue with all other user stories in same format)
+% --- Login, Event Creation, Task List, Pending Tasks, Event Modification, Calendar Visualization, Multiple Task List, Share Calendar ---
+
+\section{CRC Cards}
+\subsection*{Class: User}
+\textbf{Responsibilities:}
+\begin{itemize}
+\item Log in, Sign up
+\item Assign tasks
+\item Store profile data
+\item Manage preferences
+\end{itemize}
+\textbf{Collaborators:} Task, Notification, ProgressStatistic, CheckList, Register
+
+\subsection*{Class: Notification}
+\textbf{Responsibilities:}
+\begin{itemize}
+\item Notify the user
+\item Inform about event expiration
+\end{itemize}
+\textbf{Collaborators:} User, Task, Calendar
+
+% Continue same style for all CRC classes (Schedulable, Habit, Task, Event, ProgressStatistic, Calendar, Day, Week, Month)
+
+\section{Mockups}
+\begin{itemize}
+\item \textbf{Home:} Displays app name and login/register options.
+\item \textbf{Registration:} Presents a form to create an account.
+\item \textbf{Login:} Allows users to access with email and password.
+\item \textbf{Main Screen:} Shows calendar and task overview.
+\item \textbf{Calendar:} Displays events and tasks by date.
+\item \textbf{Check Lists:} Shows task status and date.
+\item \textbf{Events:} Displays all created events.
+\item \textbf{Dashboard:} Shows progress board.
+\item \textbf{Task Creation:} Allows event recording with attributes.
+\item \textbf{Profile:} Displays and updates user information.
+\end{itemize}
+
+\section{Reflections}
+During the development of Workshop 1, we applied the fundamental principles of Object-Oriented Programming to design a functional system for managing users, events, and tasks. One of the main challenges was properly structuring the classes and their responsibilities while maintaining consistency between functional and non-functional requirements. Through this process, we learned the importance of good planning, user stories, and code documentation.
+
+\section{Technical Design}
+\subsection{UML Diagram}
+The UML diagram represents the relationships between main classes, including inheritance and dependencies. It includes new classes such as \textit{ProgressCalculator}, \textit{Habit}, and \textit{Profile}.
+
+\subsection{Implementation Plan for OOP Concepts}
+\textbf{Encapsulation:} Data is protected through private attributes and accessed via getters and setters.
+\textbf{Inheritance:} The base class \textit{Schedulable} defines shared features for \textit{Event}, \textit{Task}, and \textit{Habit}.
+\textbf{Polymorphism:} Derived classes override inherited methods (e.g., \textit{display()} in calendar views).
+
+\subsection{Directory Structure}
+The project follows modular organization:
+\begin{itemize}
+\item \textbf{auth:} user authentication classes.
+\item \textbf{profiles:} profile management.
+\item \textbf{calendar:} schedulable classes.
+\item \textbf{views:} day/week/month calendar interfaces.
+\item \textbf{notifications:} alerts and reminders.
+\item \textbf{progress:} statistics and reports.
+\end{itemize}
+
+\section{Reflections (Workshop 2)}
+During Workshop 2, we applied OOP concepts and UML modeling to design a structured system for managing users, events, and tasks. A key challenge was creating accurate class diagrams and translating them into functional code without losing clarity or modularity. This experience emphasized the importance of UML planning, clear documentation, and object-oriented thinking.
+
+\end{document}
