@@ -1,0 +1,264 @@
+\documentclass[man, floatsintext]{apa7}
+\usepackage[american]{babel}
+\usepackage[section]{placeins}
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\usepackage{csquotes}
+\usepackage{array,fancyvrb,graphicx,verbatim,xurl}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{float}
+
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{bibliography.bib}
+
+\title{WORKSHOP \#3}
+\shorttitle{Workshop \#3}
+
+\author{
+Johan Esmit Sichacá González - 20242020313\\
+Sergio Andres Diaz Cuervo - 20251020166\\
+John Mario Jimenez Becerra - 20251020047\\
+Professor: Carlos Andres Sierra Virguez}
+\affiliation{Universidad Distrital Francisco Jose de Caldas}
+\note{Subject: OOP}
+
+\begin{document}
+
+\maketitle
+
+\section{Revisiting Requirements \& Design}
+
+\subsection{Modifications to Requirements and User Stories}
+
+Both the requirements and the user stories remained unchanged, since when implementing the SOLID principles, the classes were restructured, but no functionalities were added or removed. The changes focused on the code structure.
+
+\subsection{Modifications to CRC Cards}
+
+A distribution of the attributes of the classes that contained more than one was carried out, meaning that the responsibilities were separated, going from 3 parent classes to 7 independent classes.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{img/User.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{CRC Card User}
+  \label{fig:crc_user}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{img/TaskCreator.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{CRC Card TaskCreator}
+  \label{fig:crc_taskcreator}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{img/ProfilEditor.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{CRC Card ProfileEditor}
+  \label{fig:crc_profileeditor}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{img/PrefManager.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{CRC Card PrefManager}
+  \label{fig:crc_prefmanager}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{img/Notification.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{CRC Card Notification}
+  \label{fig:crc_notification}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{img/Notifier.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{CRC Card Notifier}
+  \label{fig:crc_notifier}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{img/Calendar.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{CRC Card Calendar}
+  \label{fig:crc_calendar}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{img/CalendarInf.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{CRC Card CalendarInf}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+User responsibilities were divided into User, TaskCreator, ProfileEditor, and PrefManager; Notification responsibilities were divided into Notification and Notifier; and Calendar responsibilities were divided into Calendar and CalendarInf.
+
+\section{Enhanced UML Diagrams}
+
+In the implementation of the SOLID principles in the previous UML diagram, new classes were incorporated based on the changes proposed in the CRC Cards.
+To comply with the Single Responsibility Principle, functions were divided into more specific classes. In addition, new interfaces were added to ensure compliance with the Interface Segregation and Dependency Inversion principles, allowing responsibilities to be clearly separated and unnecessary dependencies between classes to be avoided.
+
+Among the new interfaces, ProgressCalculator stands out, defining the behavior for calculating daily, weekly, and monthly progress, and used by the classes responsible for storing these values. The Assignable and Programmable interfaces were also added, implemented by the Task, Habit, and Event classes, since they share the functionality of assigning a duration and marking activities as completed.
+Finally, the CalendarInf interface was introduced to define the behavior for displaying activities, and it is implemented by the different calendar view classes.
+
+Lastly, the relationships between classes were corrected to better reflect the new system structure and ensure full compliance with the SOLID principles.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{Captura de pantalla 2025-11-07 140430.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{SOLID UML Diagram}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\section{SOLID-Focused Implementation}
+
+When implementing the SOLID principles, it is necessary to introduce new classes (as mentioned in the UML diagram and CRC Cards) to follow these principles, improve code maintainability, and avoid overloading responsibilities in existing classes. Additionally, applying these principles facilitates readability, modification, and scalability of the program in the future. Below is how each principle has been implemented:
+
+\subsection{Single Responsibility}
+
+In the previous design, the User, Notification, and Calendar classes were the only ones that did not comply with this principle. User was divided into four new classes:
+
+1. User: handles registration and login.
+
+2. TaskCreator: assigns tasks to the corresponding classes.
+
+3. ProfileEditor: stores profile information.
+
+4. PrefManager: modifies profile information.
+
+Notification was divided into:
+
+1.Notification: notifies users.
+
+2.Notifier: informs about the status of events.
+
+Calendar was divided into:
+
+1.Calendar: manages the general content of the calendar.
+
+2.CalendarInf: coordinates information between tasks, habits, and the different calendar views.
+
+\subsection{Open/Closed}
+
+Classes were organized to allow adding new functionality without modifying existing ones. The abstract class Schedulable enables the creation of new types of elements (such as a Meeting) simply by extending it. The same applies to calendar views (DayView, WeekView, MonthView), which share the same base but display different information depending on the view type.
+
+\subsection{Liskov Substitution}
+
+Derived classes can replace base classes without altering the expected behavior. For example, Task, Event, and Habit can replace the Schedulable class, as they represent variations of the base functionality rather than creating incompatible behaviors.
+
+\subsection{Interface Segregation}
+
+As the code evolves, interfaces are divided so that each class implements only those it actually needs. This prevents unnecessary implementations and allows new, specific interfaces to emerge according to each class’s functionality.
+
+\subsection{Dependency Inversion}
+
+The system’s most important functions (such as login or event creation) depend on interfaces rather than unnecessary concrete classes. This ensures greater flexibility and decoupling, making future changes easier without affecting the overall structure of the code.
+
+\section{Work in Progress Code \& Documentation}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{image.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Class Task}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+This class represent a Task. Previously, it was part of User, but it was modified to comply with the SOLID principles.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Captura de pantalla 2025-11-07 150950.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Class Profile}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+This class is responsible for storing user information. Previously, it was part of User, but it was modified to comply with SOLID principles.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Captura de pantalla 2025-11-07 150239.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Class Event}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+This class represents an event and will also mark when an event has expired. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Captura de pantalla 2025-11-07 150743.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Class Notifier}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+This class is responsible for notifying the user of the status of an event. It was previously located in Notification, but was moved to comply with the principle of single responsibility.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Captura de pantalla 2025-11-07 151230.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Class Notification}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+This class is responsible for notifying the user. Previously, the responsibility of the Notifier class toward this class was modified to comply with the 
+
+\section{Brief Reflection}
+
+During the development of Workshop \#3, we focused on applying the SOLID principles within the Object-Oriented Programming concepts previously used in the design and creation of the application. Throughout the process, we faced several challenges related to the proper implementation of the SOLID principles, particularly in the use of interfaces and in understanding the SRP principle, which states that each class should have a single responsibility. At this stage, we struggled to determine how far we should divide or distribute the methods among the classes. Overall, this workshop helped us understand the importance of SOLID principles and their impact on software development, strengthening our skills in design, teamwork, and logical thinking within the context of object-oriented programming.
+\end{document}
