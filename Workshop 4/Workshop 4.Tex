@@ -1,0 +1,175 @@
+\documentclass[man, floatsintext]{apa7}
+\usepackage[american]{babel}
+\usepackage[section]{placeins}
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\usepackage{csquotes}
+\usepackage{array,fancyvrb,graphicx,verbatim,xurl}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{float}
+
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{bibliography.bib}
+
+\title{WORKSHOP \#4}
+\shorttitle{Workshop \#4}
+
+\author{
+Johan Esmit Sichacá González - 20242020313\\
+Sergio Andres Diaz Cuervo - 20251020166\\
+John Mario Jimenez Becerra - 20251020047\\
+Professor: Carlos Andres Sierra Virguez}
+\affiliation{Universidad Distrital Francisco Jose de Caldas}
+\note{Subject: OOP}
+
+\begin{document}
+
+\maketitle
+
+\section{Revisiting Layers and Design}
+
+Upon reviewing our class diagrams and previous design documentation, we confirmed that they aligned well with the final layered approach. Only minor adjustments were required to clarify the responsibilities and slightly reduce the coupling, while the overall strength of the original design remained intact.
+
+\section{Java FX based GUI Prototype}
+
+Based on the main login and registration mockups, we created the corresponding graphical interface prototypes using the JavaFX framework. These prototypes include the buttons that, in the final version, will redirect to the login and registration interfaces. In the final application, all interfaces will be interconnected.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{Captura de pantalla 2025-11-28 134532.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Main Mockup}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{Captura de pantalla 2025-11-28 141326.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Main GUI}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{Captura de pantalla 2025-11-28 144442.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Login Mockup}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{Captura de pantalla 2025-11-28 144535.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Login GUI}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{Captura de pantalla 2025-11-28 144629.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Register Mockup}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{Captura de pantalla 2025-11-28 145245.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Register GUI}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\section{File Storage}
+
+To implement data saving and retrieval(File storage) in the User class, a text file was created to store each user's information (name, password, and email). This allows the application to detect whether a user already exists based solely on their name. Additionally, it ensures that only the Profile class can update this information.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{Captura de pantalla 2025-11-28 145400.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Method for saving information in the file}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\section{Documentation and Artifact Submission}
+
+As can be seen in the images, there is a significant reduction in the total number of classes in the diagram, while maintaining what had been learned about SOLID concepts. In addition, the App class is added, which is the main class and represents the TrackTivity application. This led us to change certain relationships between other classes, such as the User class, which had the most relationships with the various classes. Its responsibilities now become part of the main class. Responsibilities are added to certain classes, such as the Notification class, to which a function is added so that the user can activate or deactivate these notifications. You can also see how the arrows that mark the relationships between classes are well marked, and the organization of the classes goes from being hierarchical to decentralized, resulting in a cleaner and better organized technical design.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Captura de pantalla 2025-11-28 150540.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{UML Workshop \#3}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Captura de pantalla 2025-11-28 152134.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{UML Update}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+Presented below are excerpts of each graphical interface, as the complete code is extensive:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Captura de pantalla 2025-11-28 151327.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Main GUI Code}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Captura de pantalla 2025-11-28 151607.png}
+  \captionsetup{
+    justification=centering, 
+    singlelinecheck=false    
+  }
+  \caption{Login GUI Code}
+  \label{fig:crc_calendarinf}
+\end{figure}
+
+\section{Brief Reflection}
+
+During Workshop \#4, we primarily focused on the graphical user interface (UI) for the application, as well as making corrections to the previous submission, mostly reflected in the new class diagram. Each section retained previously learned concepts.
+During the project's development, using the "JavaFX" extension presented a significant challenge. Having no prior experience with this topic, it was a completely new and challenging task.Despite this, we learned how to manage this extension using tools such as Intellij and various tutorials, resulting in the main interfaces that the application will have.
+It also prompted us to reorganize the UML diagram, taking into account the Pokemon example provided by the professor. We learned how to mark the relationships between classes and decide the function that each one performs within the app, as well as whether it was marked as an interface, abstract class, parent class, child class, etc. This greatly simplified what had been done in the previous workshop and, of course, applied the SOLID principles that had been proposed previously.
+In general, we learned the basics of creating a graphical interface for an application using JavaFX, strengthening our problem-solving skills and use of new tools. We also reinforced what we had learned previously, giving us the opportunity to better organize our ideas for the application.
+
+\end{document}
