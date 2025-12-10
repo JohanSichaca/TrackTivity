@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,7 +38,7 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f9ede3" height="905.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="247.0" />
-      <VBox layoutX="33.0" layoutY="85.0" prefHeight="843.0" prefWidth="213.0">
+      <VBox layoutX="34.0" layoutY="92.0" prefHeight="843.0" prefWidth="213.0">
          <children>
             <HBox prefHeight="50.0" prefWidth="178.0">
                <children>
@@ -120,10 +122,35 @@
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="935.0" layoutY="524.0" text="Dashboard">
+      <Label layoutX="1035.0" layoutY="525.0" text="Dashboard">
          <font>
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
       </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f9ede3" height="368.0" layoutX="1041.0" layoutY="558.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 15; -fx-arc-width: 15;" width="613.0" />
+      <TableView fx:id="completedTable" layoutX="1381.0" layoutY="617.0" prefHeight="287.0" prefWidth="238.0" style="-fx-background-radius: 5;">
+         <columns>
+            <TableColumn fx:id="cTaskCol" text="Name Task" />
+            <TableColumn fx:id="cPriorityCol" minWidth="0.0" prefWidth="71.0" text="Priority" />
+            <TableColumn fx:id="cExpirationCol" prefWidth="86.0" text="Date" />
+         </columns>
+      </TableView>
+      <Label layoutX="1159.0" layoutY="583.0" prefHeight="34.0" prefWidth="83.0" text="Pending">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="1452.0" layoutY="588.0" prefHeight="23.0" prefWidth="97.0" text="Complete">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="pendingTable" layoutX="1087.0" layoutY="620.0" prefHeight="287.0" prefWidth="238.0" style="-fx-background-radius: 5;">
+         <columns>
+            <TableColumn fx:id="pTaskCol" prefWidth="74.0" text="Name Task" />
+            <TableColumn fx:id="pPriorityCol" minWidth="0.0" prefWidth="77.0" text="Priority" />
+            <TableColumn fx:id="pExpirationCol" prefWidth="86.0" text="Date" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

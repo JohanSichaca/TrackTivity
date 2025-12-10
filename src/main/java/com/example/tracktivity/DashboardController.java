@@ -80,7 +80,6 @@ public class DashboardController {
         if (completedTable != null)
             completedTable.setItems(completedList);
 
-        // Asignar columnas
         if (pTaskCol != null) pTaskCol.setCellValueFactory(cell -> cell.getValue().taskNameProperty());
         if (pPriorityCol != null) pPriorityCol.setCellValueFactory(cell -> cell.getValue().priorityProperty());
         if (pExpirationCol != null) pExpirationCol.setCellValueFactory(cell -> cell.getValue().expirationDateProperty());
