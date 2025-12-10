@@ -97,6 +97,4 @@ public class ChecklistController {
     @FXML
     private void AddTaskButton(ActionEvent event){ changeScene(event, "NewTask.fxml"); }
 
-    @FXML
-    private void NewListButton(ActionEvent event){ changeScene(event, "NewList.fxml"); }
 }
