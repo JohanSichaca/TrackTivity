@@ -3,7 +3,6 @@ package com.example.tracktivity;
 import javafx.application.Application;
 
 public class Launcher {
-     static void main(String[] args) {
-        Application.launch(HelloApplication.class, args);
+    static void main(String[] args) {Application.launch(HelloApplication.class, args);
     }
 }

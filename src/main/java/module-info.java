@@ -5,6 +5,7 @@ module com.example.tracktivity {
     requires com.dlsc.formsfx;
     requires javafx.base;
     requires javafx.graphics;
+    requires java.desktop;
 
     opens com.example.tracktivity to javafx.fxml;
     exports com.example.tracktivity;

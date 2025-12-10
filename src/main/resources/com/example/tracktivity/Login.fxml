@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tracktivity.LoginController">
    <children>
-      <Button fx:id="Register2Button" layoutX="1803.0" layoutY="4.0" mnemonicParsing="false" onAction="#RegisterButton" prefHeight="33.0" prefWidth="104.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="Register">
+      <Button fx:id="Register2Button" layoutX="1803.0" layoutY="4.0" mnemonicParsing="false" onAction="#registerButton" prefHeight="33.0" prefWidth="104.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="Register">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -36,22 +36,22 @@
             <Font name="Century Gothic Bold" size="42.0" />
          </font>
       </Label>
-      <TextField layoutX="728.0" layoutY="251.0" prefHeight="54.0" prefWidth="522.0" promptText="Enter an e-mail" style="-fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5; -fx-background-color: white;">
+      <TextField fx:id="emailField" layoutX="728.0" layoutY="251.0" prefHeight="54.0" prefWidth="522.0" promptText="Enter an e-mail" style="-fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5; -fx-background-color: white;">
          <font>
             <Font name="Century Gothic Bold" size="12.0" />
          </font>
       </TextField>
-      <PasswordField layoutX="728.0" layoutY="323.0" prefHeight="54.0" prefWidth="522.0" promptText="Enter your password" style="-fx-background-color: white; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;">
+      <PasswordField fx:id="passwordField" layoutX="728.0" layoutY="323.0" prefHeight="54.0" prefWidth="522.0" promptText="Enter your password" style="-fx-background-color: white; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;">
          <font>
             <Font name="Century Gothic Bold" size="12.0" />
          </font>
       </PasswordField>
-      <Button fx:id="Register3Button" layoutX="720.0" layoutY="381.0" mnemonicParsing="false" onAction="#RegisterButton" prefHeight="29.0" prefWidth="201.0" style="-fx-background-color: transparent; -fx-text-fill: #ffd3b6;" text="Forgot your password?">
+      <Button fx:id="Register3Button" layoutX="720.0" layoutY="381.0" mnemonicParsing="false" onAction="#registerButton" prefHeight="29.0" prefWidth="201.0" style="-fx-background-color: transparent; -fx-text-fill: #ffd3b6;" text="Forgot your password?">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="Register4Button" layoutX="1013.0" layoutY="474.0" mnemonicParsing="false" onAction="#RegisterButton" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: transparent; -fx-text-fill: #ffd3b6;" text="Register">
+      <Button fx:id="Register4Button" layoutX="1013.0" layoutY="474.0" mnemonicParsing="false" onAction="#registerButton" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: transparent; -fx-text-fill: #ffd3b6;" text="Register">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
@@ -61,7 +61,7 @@
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="Login3Button" graphicTextGap="5.0" layoutX="731.0" layoutY="428.0" mnemonicParsing="false" onAction="#MainButton" prefHeight="42.0" prefWidth="514.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="Log-in">
+      <Button fx:id="Login3Button" graphicTextGap="5.0" layoutX="731.0" layoutY="428.0" mnemonicParsing="false" onAction="#loginUser" prefHeight="42.0" prefWidth="514.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="Log-in">
          <font>
             <Font name="Century Gothic Bold" size="22.0" />
          </font>

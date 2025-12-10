@@ -65,4 +65,6 @@ public class ChecklistController {
     private void NewListButton(ActionEvent event) {
         changeScene(event, "NewList.fxml");
     }
+
+
 }
