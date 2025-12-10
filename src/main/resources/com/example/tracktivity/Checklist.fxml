@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tracktivity.ChecklistController">
+   <children>
+      <Line endX="1162.0" endY="-61.0" layoutX="759.0" layoutY="122.0" startX="-758.0" startY="-61.0" />
+      <Line endX="1107.0" endY="-61.0" layoutX="813.0" layoutY="1028.0" startX="-813.0" startY="-61.0" />
+      <ImageView fitHeight="42.0" fitWidth="88.0" layoutX="1836.0" layoutY="970.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Añadir%20un%20título%20(2).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="71.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Añadir%20un%20título%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImageProfile" fitHeight="54.0" fitWidth="56.0" layoutX="1861.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20194036.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImageNotifications" fitHeight="42.0" fitWidth="56.0" layoutX="1803.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20194208.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f9ede3" height="905.0" layoutX="1.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" width="247.0" />
+      <VBox layoutX="43.0" layoutY="94.0" prefHeight="843.0" prefWidth="213.0">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="178.0">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20202438.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="HomeButton2" mnemonicParsing="false" onAction="#HomeButton" prefHeight="55.0" prefWidth="115.0" style="-fx-background-color: transparent;" text="Home">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="55.0" prefWidth="215.0">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20202727.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="CalendarButton2" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#CalendarButton" prefHeight="47.0" prefWidth="147.0" style="-fx-background-color: transparent;" text="Calendar">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="52.0" prefWidth="213.0">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20202804.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="152.0" style="-fx-background-color: Transparent;" text="Check-list">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="56.0" prefWidth="213.0">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20202850.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="EventsButton2" mnemonicParsing="false" onAction="#EventsButton" prefHeight="59.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Events">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="48.0" prefWidth="213.0">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20202951.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="DashboardButton2" mnemonicParsing="false" onAction="#DashboardButton" prefHeight="65.0" prefWidth="161.0" style="-fx-background-color: transparent;" text="Dashboard">
+                     <font>
+                        <Font name="Century Gothic Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label layoutX="319.0" layoutY="146.0" prefHeight="54.0" prefWidth="213.0" text="Check-list">
+         <font>
+            <Font name="Century Gothic Bold" size="42.0" />
+         </font>
+      </Label>
+      <Button fx:id="AddTask2" layoutX="881.0" layoutY="701.0" mnemonicParsing="false" onAction="#AddTaskButton" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="+ Add Task">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="NewListButton2" layoutX="1584.0" layoutY="155.0" mnemonicParsing="false" onAction="#NewListButton" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="+ New List">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

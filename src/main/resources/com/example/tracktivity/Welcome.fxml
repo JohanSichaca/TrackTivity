@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tracktivity.WelcomeController">
+    <children>
+        <Button fx:id="Register1Button" layoutX="1695.0" layoutY="5.0" mnemonicParsing="false" onAction="#RegisterButton" prefHeight="33.0" prefWidth="104.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="Register">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="Login2Button" layoutX="1809.0" layoutY="5.0" mnemonicParsing="false" onAction="#LoginButton" prefHeight="33.0" prefWidth="103.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="Log-in">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Button>
+        <Label contentDisplay="CENTER" layoutX="868.0" layoutY="127.0" prefHeight="54.0" prefWidth="216.0" text="WELCOME">
+            <font>
+                <Font name="Century Gothic Bold" size="42.0" />
+            </font>
+        </Label>
+        <Label contentDisplay="CENTER" layoutX="638.0" layoutY="170.0" prefHeight="51.0" prefWidth="760.0" text="Organize and schedule your activities">
+            <font>
+                <Font name="Century Gothic Bold" size="40.0" />
+            </font>
+        </Label>
+        <Line endX="384.5" endY="-6.0" layoutX="995.0" layoutY="227.0" startX="-356.0" startY="-6.0" />
+        <Line endX="1107.0001220703125" endY="-61.0" layoutX="813.0" layoutY="1010.0" startX="-813.0" startY="-61.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="269.0" layoutX="520.0" layoutY="293.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="272.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="269.0" layoutX="850.0" layoutY="293.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="272.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="269.0" layoutX="1180.0" layoutY="293.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="272.0" />
+        <ImageView fitHeight="134.0" fitWidth="135.0" layoutX="590.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20134956.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="134.0" fitWidth="135.0" layoutX="920.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20135042.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="134.0" fitWidth="135.0" layoutX="1250.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20135112.png" />
+            </image>
+        </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="88.0" layoutX="1824.0" layoutY="956.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Añadir%20un%20título%20(2).png" />
+         </image>
+      </ImageView>
+        <Button fx:id="Login1Button" layoutX="933.0" layoutY="645.0" mnemonicParsing="false" onAction="#LoginButton" prefHeight="56.0" prefWidth="114.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="Log-in">
+            <font>
+                <Font name="Century Gothic Bold" size="22.0" />
+            </font>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+        </Button>
+        <ImageView fitHeight="42.0" fitWidth="71.0" layoutX="6.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../images/Añadir%20un%20título%20(1).png" />
+            </image>
+        </ImageView>
+      <Line endX="1171.0" endY="-61.0" layoutX="749.0" layoutY="112.0" startX="-749.0" startY="-61.0" />
+      <Line endX="-59.5" endY="36.0" layoutX="1423.0" layoutY="334.0" startX="-160.0" startY="36.0" />
+      <Label layoutX="1265.0" layoutY="333.0" prefHeight="42.0" prefWidth="95.0" text="Control">
+         <font>
+            <Font name="Century Gothic Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="935.0" layoutY="330.0" prefHeight="42.0" prefWidth="116.0" text="Program">
+         <font>
+            <Font name="Century Gothic Bold" size="25.0" />
+         </font>
+      </Label>
+      <Line endX="-44.0" endY="36.0" layoutX="1092.0" layoutY="332.0" startX="-160.0" startY="36.0" />
+      <Label layoutX="600.0" layoutY="327.0" prefHeight="42.0" prefWidth="116.0" text="Organize">
+         <font>
+            <Font name="Century Gothic Bold" size="25.0" />
+         </font>
+      </Label>
+      <Line endX="-44.0" endY="36.0" layoutX="758.0" layoutY="329.0" startX="-160.0" startY="36.0" />
+    </children>
+</AnchorPane>
