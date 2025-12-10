@@ -1,11 +1,17 @@
 package com.example.tracktivity;
 
+import Logic.Services.Schedulable;
+import Logic.Services.TaskManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -16,6 +22,21 @@ public class DashboardController {
 
     @FXML
     private ImageView ImageNotifications;
+
+    // Tablas del dashboard
+    @FXML private TableView<Schedulable> pendingTable;
+    @FXML private TableView<Schedulable> completedTable;
+
+    @FXML private TableColumn<Schedulable, String> pTaskCol;
+    @FXML private TableColumn<Schedulable, String> pPriorityCol;
+    @FXML private TableColumn<Schedulable, String> pExpirationCol;
+
+    @FXML private TableColumn<Schedulable, String> cTaskCol;
+    @FXML private TableColumn<Schedulable, String> cPriorityCol;
+    @FXML private TableColumn<Schedulable, String> cExpirationCol;
+
+    private ObservableList<Schedulable> pendingList = FXCollections.observableArrayList();
+    private ObservableList<Schedulable> completedList = FXCollections.observableArrayList();
 
     private void changeScene(javafx.event.Event event, String fxml) {
         try {
@@ -39,6 +60,34 @@ public class DashboardController {
     private void initialize() {
         ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
         ImageProfile.setOnMouseClicked(e -> changeScene(e, "Profile.fxml"));
+
+        // Cargar tareas
+        TaskManager.loadFromFile();
+
+        pendingList.clear();
+        completedList.clear();
+
+        for (Schedulable task : TaskManager.tasksList) {
+            if (task.isStatus())
+                completedList.add(task);
+            else
+                pendingList.add(task);
+        }
+
+        if (pendingTable != null)
+            pendingTable.setItems(pendingList);
+
+        if (completedTable != null)
+            completedTable.setItems(completedList);
+
+        // Asignar columnas
+        if (pTaskCol != null) pTaskCol.setCellValueFactory(cell -> cell.getValue().taskNameProperty());
+        if (pPriorityCol != null) pPriorityCol.setCellValueFactory(cell -> cell.getValue().priorityProperty());
+        if (pExpirationCol != null) pExpirationCol.setCellValueFactory(cell -> cell.getValue().expirationDateProperty());
+
+        if (cTaskCol != null) cTaskCol.setCellValueFactory(cell -> cell.getValue().taskNameProperty());
+        if (cPriorityCol != null) cPriorityCol.setCellValueFactory(cell -> cell.getValue().priorityProperty());
+        if (cExpirationCol != null) cExpirationCol.setCellValueFactory(cell -> cell.getValue().expirationDateProperty());
     }
 
     @FXML
@@ -59,10 +108,5 @@ public class DashboardController {
     @FXML
     private void AddTaskButton(ActionEvent event) {
         changeScene(event, "NewTask.fxml");
-    }
-
-    @FXML
-    private void NewListButton(ActionEvent event) {
-        changeScene(event, "NewList.fxml");
     }
 }
