@@ -1,8 +1,7 @@
 package com.example.tracktivity;
 
 import Logic.Services.Schedulable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import Logic.Services.TaskManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -25,14 +24,36 @@ public class ChecklistController {
     @FXML private TableColumn<Schedulable, String> subjectCol;
     @FXML private TableColumn<Schedulable, String> expirationDateCol;
     @FXML private TableColumn<Schedulable, Boolean> statusCol;
-    @FXML private ImageView ImageProfile;
-    @FXML private ImageView ImageNotifications;
 
-    private ObservableList<Schedulable> tasksList = FXCollections.observableArrayList();
+    @FXML
+    private ImageView ImageProfile;
+
+    @FXML
+    private ImageView ImageNotifications;
+
+    @FXML
+    private void deleteTask(ActionEvent event) {
+
+        Schedulable selected = tableView.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            System.out.println("No task selected");
+            return;
+        }
+
+        TaskManager.tasksList.remove(selected);
+
+        TaskManager.saveToFile();
+
+        System.out.println("Deleted task");
+    }
 
     @FXML
     private void initialize() {
-        tableView.setItems(tasksList);
+
+        TaskManager.loadFromFile();
+
+        tableView.setItems(TaskManager.tasksList);
         tableView.setEditable(true);
 
         taskNameCol.setCellValueFactory(cell -> cell.getValue().taskNameProperty());
@@ -41,31 +62,41 @@ public class ChecklistController {
         priorityCol.setCellValueFactory(cell -> cell.getValue().priorityProperty());
         subjectCol.setCellValueFactory(cell -> cell.getValue().subjectProperty());
         expirationDateCol.setCellValueFactory(cell -> cell.getValue().expirationDateProperty());
+
         statusCol.setCellValueFactory(cell -> cell.getValue().statusProperty());
         statusCol.setCellFactory(CheckBoxTableCell.forTableColumn(statusCol));
     }
 
-    public void addTask(Schedulable task) {
-        tasksList.add(task);
-    }
-
     private void changeScene(javafx.event.Event event, String fxml) {
         try {
+            TaskManager.saveToFile();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tracktivity/" + fxml));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Botones de navegación
-    @FXML private void HomeButton(ActionEvent event){ changeScene(event, "Home.fxml"); }
-    @FXML private void CalendarButton(ActionEvent event){ changeScene(event, "Calendar.fxml"); }
-    @FXML private void EventsButton(ActionEvent event){ changeScene(event, "Events.fxml"); }
-    @FXML private void DashboardButton(ActionEvent event){ changeScene(event, "Dashboard.fxml"); }
-    @FXML private void AddTaskButton(ActionEvent event){ changeScene(event, "NewTask.fxml"); }
-    @FXML private void NewListButton(ActionEvent event){ changeScene(event, "NewList.fxml"); }
+    @FXML
+    private void HomeButton(ActionEvent event){ changeScene(event, "Home.fxml"); }
+
+    @FXML
+    private void CalendarButton(ActionEvent event){ changeScene(event, "Calendar.fxml"); }
+
+    @FXML
+    private void EventsButton(ActionEvent event){ changeScene(event, "Events.fxml"); }
+
+    @FXML
+    private void DashboardButton(ActionEvent event){ changeScene(event, "Dashboard.fxml"); }
+
+    @FXML
+    private void AddTaskButton(ActionEvent event){ changeScene(event, "NewTask.fxml"); }
+
+    @FXML
+    private void NewListButton(ActionEvent event){ changeScene(event, "NewList.fxml"); }
 }

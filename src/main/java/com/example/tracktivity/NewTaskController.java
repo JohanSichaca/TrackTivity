@@ -1,6 +1,8 @@
 package com.example.tracktivity;
 
 import Logic.Services.Schedulable;
+import Logic.Services.TaskManager;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -21,6 +23,7 @@ public class NewTaskController {
 
     @FXML
     private void createTaskButton(ActionEvent event) {
+
         Schedulable task = new Schedulable(
                 taskNameField.getText(),
                 descriptionField.getText(),
@@ -30,17 +33,14 @@ public class NewTaskController {
                 expirationDateField.getText()
         );
 
+        TaskManager.tasksList.add(task);
+        TaskManager.saveToFile();
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Checklist.fxml"));
-            Parent root = loader.load();
-
-            ChecklistController controller = loader.getController();
-            controller.addTask(task);
-
+            Parent root = FXMLLoader.load(getClass().getResource("Checklist.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
         }

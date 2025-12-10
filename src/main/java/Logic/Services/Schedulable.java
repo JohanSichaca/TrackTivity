@@ -33,16 +33,22 @@ public class Schedulable {
 
     public String getTaskName() { return taskName.get(); }
     public void setTaskName(String value) { taskName.set(value); }
+
     public String getDescription() { return description.get(); }
     public void setDescription(String value) { description.set(value); }
+
     public String getCategory() { return category.get(); }
     public void setCategory(String value) { category.set(value); }
+
     public String getPriority() { return priority.get(); }
     public void setPriority(String value) { priority.set(value); }
+
     public String getSubject() { return subject.get(); }
     public void setSubject(String value) { subject.set(value); }
+
     public String getExpirationDate() { return expirationDate.get(); }
     public void setExpirationDate(String value) { expirationDate.set(value); }
+
     public boolean isStatus() { return status.get(); }
     public void setStatus(boolean value) { status.set(value); }
 }
