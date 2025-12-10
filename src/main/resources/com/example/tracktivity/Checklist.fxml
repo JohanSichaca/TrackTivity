@@ -117,7 +117,7 @@
             <Font name="Century Gothic Bold" size="42.0" />
          </font>
       </Label>
-      <Button fx:id="AddTask2" layoutX="997.0" layoutY="837.0" mnemonicParsing="false" onAction="#AddTaskButton" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="+ Add Task">
+      <Button fx:id="AddTask0" layoutX="1001.0" layoutY="829.0" mnemonicParsing="false" onAction="#AddTaskButton" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="+ Add Task">
          <font>
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
@@ -127,15 +127,15 @@
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
       </Button>
-      <TableView layoutX="392.0" layoutY="224.0" prefHeight="579.0" prefWidth="1369.0">
-        <columns>
-          <TableColumn prefWidth="196.6666259765625" text="Name Task" />
-            <TableColumn prefWidth="203.33331298828125" text="Subject" />
-            <TableColumn prefWidth="232.0" text="Priority" />
-            <TableColumn prefWidth="270.0" text="Category" />
-            <TableColumn prefWidth="304.666748046875" text="Expiration Date" />
-            <TableColumn prefWidth="161.0" text="Status" />
-        </columns>
-      </TableView>
+      <TableView fx:id="tableView" layoutX="400.0" layoutY="236.0" prefHeight="564.0" prefWidth="1356.0">
+         <columns>
+            <TableColumn fx:id="taskNameCol" prefWidth="159.0" text="Name Task" />
+            <TableColumn fx:id="descriptionCol" prefWidth="143.0" text="Description" />
+            <TableColumn fx:id="categoryCol" prefWidth="200.0" text="Category" />
+            <TableColumn fx:id="priorityCol" prefWidth="190.0" text="Priority" />
+            <TableColumn fx:id="subjectCol" prefWidth="258.0" text="Subject" />
+            <TableColumn fx:id="expirationDateCol" prefWidth="333.0" text="Expiration Date" />
+            <TableColumn fx:id="statusCol" prefWidth="72.0" text="Status" />
+         </columns></TableView>
    </children>
 </AnchorPane>

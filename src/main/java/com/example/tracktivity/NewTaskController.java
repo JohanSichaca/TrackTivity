@@ -1,48 +1,60 @@
 package com.example.tracktivity;
 
+import Logic.Services.Schedulable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.Node;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 public class NewTaskController {
 
-    @FXML
-    private ImageView ImageProfile;
+    @FXML private TextField taskNameField;
+    @FXML private TextField descriptionField;
+    @FXML private TextField categoryField;
+    @FXML private TextField priorityField;
+    @FXML private TextField subjectField;
+    @FXML private TextField expirationDateField;
 
     @FXML
-    private ImageView ImageNotifications;
+    private void createTaskButton(ActionEvent event) {
+        Schedulable task = new Schedulable(
+                taskNameField.getText(),
+                descriptionField.getText(),
+                categoryField.getText(),
+                priorityField.getText(),
+                subjectField.getText(),
+                expirationDateField.getText()
+        );
 
-    private void changeScene(javafx.event.Event event, String fxml) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Checklist.fxml"));
             Parent root = loader.load();
+
+            ChecklistController controller = loader.getController();
+            controller.addTask(task);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void initialize() {
-        ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
-        ImageProfile.setOnMouseClicked(e -> changeScene(e, "Profile.fxml"));
-    }
-
-    @FXML
-    private void CreateTaskButton(ActionEvent event) {
-        changeScene(event, "Home.fxml");
-    }
-
-    @FXML
-    private void CancelButton(ActionEvent event) {
-        changeScene(event, "Home.fxml");
+    private void cancelButton(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Checklist.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
