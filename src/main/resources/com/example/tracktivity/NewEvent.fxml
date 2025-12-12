@@ -70,7 +70,6 @@
             <Font name="Century Gothic Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="dateField" layoutX="907.0" layoutY="575.0" prefHeight="41.0" prefWidth="177.0" promptText="YYYY-MM-DD">
          <font>
             <Font name="Century Gothic Bold" size="12.0" />
          </font>
