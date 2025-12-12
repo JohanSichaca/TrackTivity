@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -31,5 +32,6 @@
             <Font name="Century Gothic Bold" size="42.0" />
          </font>
       </Label>
+      <ListView fx:id="listViewNotifications" layoutX="528.0" layoutY="249.0" prefHeight="578.0" prefWidth="1036.0" />
    </children>
 </AnchorPane>
