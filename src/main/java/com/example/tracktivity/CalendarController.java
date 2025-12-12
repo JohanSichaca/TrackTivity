@@ -29,9 +29,6 @@ import java.util.*;
 public class CalendarController implements Initializable {
 
     @FXML
-    private ImageView ImageProfile;
-
-    @FXML
     private ImageView ImageNotifications;
 
     @FXML
@@ -86,7 +83,6 @@ public class CalendarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
-        ImageProfile.setOnMouseClicked(e -> changeScene(e, "Profile.fxml"));
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
         drawCalendar();

@@ -27,12 +27,7 @@
             <Image url="@../../../images/Añadir%20un%20título%20(1).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="ImageProfile" fitHeight="54.0" fitWidth="56.0" layoutX="1861.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20194036.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="ImageNotifications" fitHeight="42.0" fitWidth="56.0" layoutX="1803.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ImageNotifications" fitHeight="42.0" fitWidth="56.0" layoutX="1854.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20194208.png" />
          </image>

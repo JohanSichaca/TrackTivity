@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 
 public class HomeController {
 
-    @FXML private ImageView ImageProfile;
     @FXML private ImageView ImageNotifications;
 
     // Tablas de tareas
@@ -57,7 +56,6 @@ public class HomeController {
     @FXML
     private void initialize() {
         ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
-        ImageProfile.setOnMouseClicked(e -> changeScene(e, "Profile.fxml"));
 
         // Cargar tareas
         TaskManager.loadFromFile();

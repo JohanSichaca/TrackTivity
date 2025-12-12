@@ -26,9 +26,6 @@ public class ChecklistController {
     @FXML private TableColumn<Schedulable, Boolean> statusCol;
 
     @FXML
-    private ImageView ImageProfile;
-
-    @FXML
     private ImageView ImageNotifications;
 
     @FXML
@@ -66,7 +63,6 @@ public class ChecklistController {
         statusCol.setCellValueFactory(cell -> cell.getValue().statusProperty());
         statusCol.setCellFactory(CheckBoxTableCell.forTableColumn(statusCol));
 
-        ImageProfile.setOnMouseClicked(event -> changeScene(event, "Profile.fxml"));
         ImageNotifications.setOnMouseClicked(event -> changeScene(event, "Notifications.fxml"));
     }
 

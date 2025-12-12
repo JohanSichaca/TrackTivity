@@ -36,25 +36,19 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="446.0" layoutX="474.0" layoutY="231.0" stroke="BLACK" strokeType="INSIDE" width="1068.0" />
-      <TextField layoutX="514.0" layoutY="286.0" prefHeight="41.0" prefWidth="484.0" />
-      <TextField layoutX="1027.0" layoutY="286.0" prefHeight="41.0" prefWidth="491.0" />
-      <PasswordField layoutX="828.0" layoutY="368.0" prefHeight="41.0" prefWidth="368.0" />
-      <Button layoutX="930.0" layoutY="414.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="177.0" style="-fx-background-color: transparent;" text="Change Password" textFill="#ffd3b6">
+      <TextField layoutX="499.0" layoutY="284.0" prefHeight="41.0" prefWidth="491.0" />
+      <PasswordField layoutX="1043.0" layoutY="285.0" prefHeight="41.0" prefWidth="479.0" />
+      <Button layoutX="929.0" layoutY="350.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="177.0" style="-fx-background-color: transparent;" text="Change Password" textFill="#ffd3b6">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <Label layoutX="514.0" layoutY="267.0" text="Name">
+      <Label layoutX="499.0" layoutY="264.0" text="E-mail">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="1029.0" layoutY="264.0" text="E-mail">
-         <font>
-            <Font name="Century Gothic Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="829.0" layoutY="347.0" text="Password">
+      <Label layoutX="1044.0" layoutY="264.0" text="Password">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>

@@ -59,7 +59,6 @@ public class DashboardController {
     @FXML
     private void initialize() {
         ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
-        ImageProfile.setOnMouseClicked(e -> changeScene(e, "Profile.fxml"));
 
         // Cargar tareas
         TaskManager.loadFromFile();

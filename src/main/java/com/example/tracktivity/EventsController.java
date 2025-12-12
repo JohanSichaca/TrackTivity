@@ -22,7 +22,6 @@ public class EventsController {
     @FXML private TableColumn<Event, String> startTimeCol;
     @FXML private TableColumn<Event, String> endTimeCol;
 
-    @FXML private ImageView ImageProfile;
     @FXML private ImageView ImageNotifications;
 
     @FXML
@@ -37,7 +36,6 @@ public class EventsController {
         endTimeCol.setCellValueFactory(cell -> cell.getValue().endTimeProperty());
 
         ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
-        ImageProfile.setOnMouseClicked(e -> changeScene(e, "Profile.fxml"));
     }
 
     @FXML
