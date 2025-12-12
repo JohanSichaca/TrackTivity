@@ -117,7 +117,7 @@
             <Font name="Century Gothic Bold" size="42.0" />
          </font>
       </Label>
-      <Label layoutX="309.0" layoutY="198.0" text="Calendar">
+      <Label layoutX="309.0" layoutY="198.0" text="Events">
          <font>
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
@@ -157,5 +157,14 @@
             <Image url="@../../../images/Captura%20de%20pantalla%202025-12-09%20194036.png" />
          </image>
       </ImageView>
+      <TableView fx:id="eventTable" layoutX="309.0" layoutY="241.0" prefHeight="410.0" prefWidth="559.0">
+         <columns>
+            <TableColumn fx:id="nameCol" prefWidth="92.0" text="Name Event" />
+            <TableColumn fx:id="descriptionCol" prefWidth="110.0" text="Description" />
+            <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="116.0" text="Date" />
+            <TableColumn fx:id="startTimeCol" prefWidth="120.0" text="Start Time" />
+            <TableColumn fx:id="endTimeCol" prefWidth="130.0" text="End Time" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

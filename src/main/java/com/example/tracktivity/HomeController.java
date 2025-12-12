@@ -12,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class HomeController {
@@ -20,6 +19,7 @@ public class HomeController {
     @FXML private ImageView ImageProfile;
     @FXML private ImageView ImageNotifications;
 
+    // Tablas de tareas
     @FXML private TableView<Schedulable> pendingTable;
     @FXML private TableView<Schedulable> completedTable;
 
@@ -34,12 +34,19 @@ public class HomeController {
     private ObservableList<Schedulable> pendingList = FXCollections.observableArrayList();
     private ObservableList<Schedulable> completedList = FXCollections.observableArrayList();
 
+    // Tabla de eventos
+    @FXML private TableView<Event> eventTable;
+    @FXML private TableColumn<Event, String> nameCol;
+    @FXML private TableColumn<Event, String> descriptionCol;
+    @FXML private TableColumn<Event, String> dateCol;
+    @FXML private TableColumn<Event, String> startTimeCol;
+    @FXML private TableColumn<Event, String> endTimeCol;
+
     private void changeScene(javafx.event.Event event, String fxml) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tracktivity/" + fxml));
             Parent root = loader.load();
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (Exception e) {
@@ -48,55 +55,43 @@ public class HomeController {
     }
 
     @FXML
-    private void CalendarButton(ActionEvent event){
-        changeScene(event, "Calendar.fxml");
-    }
-
-    @FXML
-    private void ChecklistButton(ActionEvent event) {
-        changeScene(event, "Checklist.fxml");
-    }
-
-    @FXML
-    private void EventsButton(ActionEvent event) {
-        changeScene(event, "Events.fxml");
-    }
-
-    @FXML
-    private void DashboardButton(ActionEvent event) {
-        changeScene(event, "Dashboard.fxml");
-    }
-
-    @FXML
     private void initialize() {
         ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
         ImageProfile.setOnMouseClicked(e -> changeScene(e, "Profile.fxml"));
 
+        // Cargar tareas
         TaskManager.loadFromFile();
-
         pendingList.clear();
         completedList.clear();
-
         for (Schedulable task : TaskManager.tasksList) {
             if (task.isStatus())
                 completedList.add(task);
             else
                 pendingList.add(task);
         }
-
-        if (pendingTable != null)
-            pendingTable.setItems(pendingList);
-
-        if (completedTable != null)
-            completedTable.setItems(completedList);
-
+        if (pendingTable != null) pendingTable.setItems(pendingList);
+        if (completedTable != null) completedTable.setItems(completedList);
         if (pTaskCol != null) pTaskCol.setCellValueFactory(cell -> cell.getValue().taskNameProperty());
         if (pPriorityCol != null) pPriorityCol.setCellValueFactory(cell -> cell.getValue().priorityProperty());
         if (pExpirationCol != null) pExpirationCol.setCellValueFactory(cell -> cell.getValue().expirationDateProperty());
-
         if (cTaskCol != null) cTaskCol.setCellValueFactory(cell -> cell.getValue().taskNameProperty());
         if (cPriorityCol != null) cPriorityCol.setCellValueFactory(cell -> cell.getValue().priorityProperty());
         if (cExpirationCol != null) cExpirationCol.setCellValueFactory(cell -> cell.getValue().expirationDateProperty());
-    }
-}
 
+        // Cargar eventos
+        EventManager.loadFromFile();
+        if (eventTable != null) eventTable.setItems(EventManager.eventsList);
+        if (nameCol != null) nameCol.setCellValueFactory(cell -> cell.getValue().nameProperty());
+        if (descriptionCol != null) descriptionCol.setCellValueFactory(cell -> cell.getValue().descriptionProperty());
+        if (dateCol != null) dateCol.setCellValueFactory(cell -> cell.getValue().dateProperty());
+        if (startTimeCol != null) startTimeCol.setCellValueFactory(cell -> cell.getValue().startTimeProperty());
+        if (endTimeCol != null) endTimeCol.setCellValueFactory(cell -> cell.getValue().endTimeProperty());
+    }
+
+    @FXML private void CalendarButton(ActionEvent event){ changeScene(event, "Calendar.fxml"); }
+    @FXML private void ChecklistButton(ActionEvent event){ changeScene(event, "Checklist.fxml"); }
+    @FXML private void EventsButton(ActionEvent event){ changeScene(event, "Events.fxml"); }
+    @FXML private void DashboardButton(ActionEvent event){ changeScene(event, "Dashboard.fxml"); }
+    @FXML private void AddTaskButton(ActionEvent event){ changeScene(event, "NewTask.fxml"); }
+    @FXML private void AddEventButton(ActionEvent event){ changeScene(event, "NewEvent.fxml"); }
+}
