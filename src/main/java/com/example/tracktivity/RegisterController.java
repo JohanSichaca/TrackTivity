@@ -12,19 +12,22 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+/**
+ * Handles user registration flow.
+ * Validates data and creates accounts.
+ */
 public class RegisterController {
 
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private PasswordField confirmPasswordField;
+    @FXML private TextField emailField;
+    @FXML private PasswordField passwordField;
+    @FXML private PasswordField confirmPasswordField;
 
     private AuthManager authManager = new AuthManager();
 
+    /**
+     * Registers a new user.
+     * Verifies data and navigates to Home.
+     */
     @FXML
     private void registerUser(ActionEvent event) {
         String email = emailField.getText();
@@ -33,45 +36,48 @@ public class RegisterController {
 
         try {
             if (!authManager.validateData(email, password, confirmPassword)) {
-                showMessage("Invalid data verify email and password");
+                showMessage("Invalid data. Check email and password.");
                 return;
             }
 
             if (authManager.emailExists(email)) {
-                showMessage("Email already registered");
+                showMessage("Email already registered.");
                 return;
             }
 
             authManager.registerUser(email, password);
-            showMessage("Successfully registered user");
+            showMessage("User registered.");
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            stage.setScene(new Scene(root));
             stage.show();
 
         } catch (IOException e) {
-            showMessage("Error " + e.getMessage());
-            e.printStackTrace();
+            showMessage("Error: " + e.getMessage());
         }
     }
 
+    /**
+     * Opens the Login screen.
+     */
     @FXML
     private void loginButton(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Shows an alert message.
+     */
     private void showMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");

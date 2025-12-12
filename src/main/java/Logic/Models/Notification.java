@@ -8,12 +8,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a simple notification with name, description, and date.
+ * Can load notifications for today from resource files.
+ */
 public class Notification {
     private String name;
     private String description;
     private LocalDate date;
 
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public Notification(String name, String description, LocalDate date) {
         this.name = name;
@@ -21,23 +25,16 @@ public class Notification {
         this.date = date;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
+    public String getName() { return name; }
+    public String getDescription() { return description; }
+    public LocalDate getDate() { return date; }
 
     @Override
-    public String toString() {
-        return name + " - " + date;
-    }
+    public String toString() { return name + " - " + date; }
 
+    /**
+     * Loads notifications for today from events.txt and tasks.txt.
+     */
     public static List<Notification> loadTodayNotifications() {
         List<Notification> list = new ArrayList<>();
         LocalDate today = LocalDate.now();
@@ -64,7 +61,6 @@ public class Notification {
                     }
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

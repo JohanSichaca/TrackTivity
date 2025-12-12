@@ -15,15 +15,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * Controls the Dashboard screen.
+ * Displays pending and completed tasks.
+ */
 public class DashboardController {
 
-    @FXML
-    private ImageView ImageProfile;
+    @FXML private ImageView ImageProfile;
+    @FXML private ImageView ImageNotifications;
 
-    @FXML
-    private ImageView ImageNotifications;
-
-    // Tablas del dashboard
     @FXML private TableView<Schedulable> pendingTable;
     @FXML private TableView<Schedulable> completedTable;
 
@@ -38,6 +38,9 @@ public class DashboardController {
     private ObservableList<Schedulable> pendingList = FXCollections.observableArrayList();
     private ObservableList<Schedulable> completedList = FXCollections.observableArrayList();
 
+    /**
+     * Changes the current scene.
+     */
     private void changeScene(javafx.event.Event event, String fxml) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
@@ -51,16 +54,14 @@ public class DashboardController {
         }
     }
 
-    @FXML
-    private void HomeButton(ActionEvent event){
-        changeScene(event, "Home.fxml");
-    }
+    /** Opens Home screen. */
+    @FXML private void HomeButton(ActionEvent event){ changeScene(event, "Home.fxml"); }
 
+    /** Initializes the dashboard. */
     @FXML
     private void initialize() {
         ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
 
-        // Cargar tareas
         TaskManager.loadFromFile();
 
         pendingList.clear();
@@ -88,23 +89,15 @@ public class DashboardController {
         if (cExpirationCol != null) cExpirationCol.setCellValueFactory(cell -> cell.getValue().expirationDateProperty());
     }
 
-    @FXML
-    private void CalendarButton(ActionEvent event) {
-        changeScene(event, "Calendar.fxml");
-    }
+    /** Opens Calendar screen. */
+    @FXML private void CalendarButton(ActionEvent event){ changeScene(event, "Calendar.fxml"); }
 
-    @FXML
-    private void EventsButton(ActionEvent event) {
-        changeScene(event, "Events.fxml");
-    }
+    /** Opens Events screen. */
+    @FXML private void EventsButton(ActionEvent event){ changeScene(event, "Events.fxml"); }
 
-    @FXML
-    private void ChecklistButton(ActionEvent event) {
-        changeScene(event, "Checklist.fxml");
-    }
+    /** Opens Checklist screen. */
+    @FXML private void ChecklistButton(ActionEvent event){ changeScene(event, "Checklist.fxml"); }
 
-    @FXML
-    private void AddTaskButton(ActionEvent event) {
-        changeScene(event, "NewTask.fxml");
-    }
+    /** Opens New Task screen. */
+    @FXML private void AddTaskButton(ActionEvent event){ changeScene(event, "NewTask.fxml"); }
 }

@@ -13,6 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+/**
+ * Controls the Events screen.
+ * Loads, displays, and deletes events.
+ */
 public class EventsController {
 
     @FXML private TableView<Event> tableView;
@@ -21,9 +25,11 @@ public class EventsController {
     @FXML private TableColumn<Event, String> dateCol;
     @FXML private TableColumn<Event, String> startTimeCol;
     @FXML private TableColumn<Event, String> endTimeCol;
-
     @FXML private ImageView ImageNotifications;
 
+    /**
+     * Initializes table and loads events.
+     */
     @FXML
     private void initialize() {
         EventManager.loadFromFile();
@@ -38,6 +44,9 @@ public class EventsController {
         ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
     }
 
+    /**
+     * Deletes the selected event.
+     */
     @FXML
     private void deleteEvent(ActionEvent event) {
         Event selected = tableView.getSelectionModel().getSelectedItem();
@@ -52,6 +61,9 @@ public class EventsController {
         tableView.refresh();
     }
 
+    /**
+     * Changes the current scene.
+     */
     private void changeScene(javafx.event.Event event, String fxml) {
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -66,9 +78,18 @@ public class EventsController {
         }
     }
 
+    /** Opens Home. */
     @FXML private void HomeButton(ActionEvent event){ changeScene(event, "Home.fxml"); }
+
+    /** Opens Calendar. */
     @FXML private void CalendarButton(ActionEvent event){ changeScene(event, "Calendar.fxml"); }
+
+    /** Opens Checklist. */
     @FXML private void ChecklistButton(ActionEvent event){ changeScene(event, "Checklist.fxml"); }
+
+    /** Opens Dashboard. */
     @FXML private void DashboardButton(ActionEvent event){ changeScene(event, "Dashboard.fxml"); }
+
+    /** Opens event creation form. */
     @FXML private void AddEventButton(ActionEvent event){ changeScene(event, "NewEvent.fxml"); }
 }

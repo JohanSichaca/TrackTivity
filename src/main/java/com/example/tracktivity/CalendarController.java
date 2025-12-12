@@ -26,23 +26,23 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+/**
+ * Controls the Calendar screen.
+ * Draws month view and loads events.
+ */
 public class CalendarController implements Initializable {
 
-    @FXML
-    private ImageView ImageNotifications;
-
-    @FXML
-    private Text year;
-
-    @FXML
-    private Text month;
-
-    @FXML
-    private FlowPane calendar;
+    @FXML private ImageView ImageNotifications;
+    @FXML private Text year;
+    @FXML private Text month;
+    @FXML private FlowPane calendar;
 
     private ZonedDateTime dateFocus;
     private ZonedDateTime today;
 
+    /**
+     * Changes the current scene.
+     */
     private void changeScene(javafx.event.Event event, String fxml) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
@@ -55,31 +55,24 @@ public class CalendarController implements Initializable {
         }
     }
 
-    @FXML
-    private void HomeButton(ActionEvent event){
-        changeScene(event, "Home.fxml");
-    }
+    /** Goes to Home. */
+    @FXML private void HomeButton(ActionEvent event){ changeScene(event, "Home.fxml"); }
 
-    @FXML
-    private void ChecklistButton(ActionEvent event) {
-        changeScene(event, "Checklist.fxml");
-    }
+    /** Opens Checklist. */
+    @FXML private void ChecklistButton(ActionEvent event) { changeScene(event, "Checklist.fxml"); }
 
-    @FXML
-    private void EventsButton(ActionEvent event) {
-        changeScene(event, "Events.fxml");
-    }
+    /** Opens Events. */
+    @FXML private void EventsButton(ActionEvent event) { changeScene(event, "Events.fxml"); }
 
-    @FXML
-    private void DashboardButton(ActionEvent event) {
-        changeScene(event, "Dashboard.fxml");
-    }
+    /** Opens Dashboard. */
+    @FXML private void DashboardButton(ActionEvent event) { changeScene(event, "Dashboard.fxml"); }
 
-    @FXML
-    private void AddEventButton(ActionEvent event) {
-        changeScene(event, "NewEvent.fxml");
-    }
+    /** Opens New Event form. */
+    @FXML private void AddEventButton(ActionEvent event) { changeScene(event, "NewEvent.fxml"); }
 
+    /**
+     * Initializes view and draws initial month.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
@@ -88,6 +81,9 @@ public class CalendarController implements Initializable {
         drawCalendar();
     }
 
+    /**
+     * Moves to previous month.
+     */
     @FXML
     void backOneMonth(ActionEvent event) {
         dateFocus = dateFocus.minusMonths(1);
@@ -95,6 +91,9 @@ public class CalendarController implements Initializable {
         drawCalendar();
     }
 
+    /**
+     * Moves to next month.
+     */
     @FXML
     void forwardOneMonth(ActionEvent event) {
         dateFocus = dateFocus.plusMonths(1);
@@ -102,56 +101,81 @@ public class CalendarController implements Initializable {
         drawCalendar();
     }
 
+    /**
+     * Draws the monthly calendar grid.
+     */
     private void drawCalendar() {
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
+
         double calendarWidth = calendar.getPrefWidth();
         double calendarHeight = calendar.getPrefHeight();
         double strokeWidth = 1;
+
         double spacingH = calendar.getHgap();
         double spacingV = calendar.getVgap();
+
         Map<Integer, List<Calendar>> calendarMap = getCalendarActivitiesMonth(dateFocus);
+
         int monthMaxDate = dateFocus.toLocalDate().lengthOfMonth();
         int dateOffset = dateFocus.withDayOfMonth(1).getDayOfWeek().getValue();
+
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 7; col++) {
+
                 StackPane stackPane = new StackPane();
+
                 Rectangle rectangle = new Rectangle();
                 rectangle.setFill(Color.TRANSPARENT);
                 rectangle.setStroke(Color.BLACK);
                 rectangle.setStrokeWidth(strokeWidth);
+
                 double cellWidth = (calendarWidth / 7) - strokeWidth - spacingH;
                 double cellHeight = (calendarHeight / 6) - strokeWidth - spacingV;
+
                 rectangle.setWidth(cellWidth);
                 rectangle.setHeight(cellHeight);
                 stackPane.getChildren().add(rectangle);
+
                 int calculatedDate = (col + 1) + (7 * row);
                 int currentDate = calculatedDate - dateOffset;
+
                 if (calculatedDate > dateOffset && currentDate <= monthMaxDate) {
                     Text dateText = new Text(String.valueOf(currentDate));
                     dateText.setTranslateY(-cellHeight * 0.35);
                     stackPane.getChildren().add(dateText);
+
                     List<Calendar> activities = calendarMap.get(currentDate);
-                    if (activities != null) createCalendarActivity(activities, cellHeight, cellWidth, stackPane);
-                    if (today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate) {
+                    if (activities != null) {
+                        createCalendarActivity(activities, cellHeight, cellWidth, stackPane);
+                    }
+
+                    if (today.getYear() == dateFocus.getYear() &&
+                            today.getMonth() == dateFocus.getMonth() &&
+                            today.getDayOfMonth() == currentDate) {
                         rectangle.setStroke(Color.BLUE);
                         rectangle.setStrokeWidth(2);
                     }
                 }
+
                 calendar.getChildren().add(stackPane);
             }
         }
     }
 
+    /**
+     * Adds event previews inside a calendar cell.
+     */
     private void createCalendarActivity(List<Calendar> activities, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
+
         VBox activityBox = new VBox(2);
         activityBox.setStyle("-fx-background-color: #C0C0C0; -fx-padding: 2;");
         activityBox.setMaxWidth(rectangleWidth * 0.9);
-        activityBox.setMinWidth(rectangleWidth * 0.9);
         activityBox.setPrefWidth(rectangleWidth * 0.9);
         activityBox.setMaxHeight(rectangleHeight * 0.55);
         activityBox.setPrefHeight(rectangleHeight * 0.55);
         activityBox.setTranslateY(rectangleHeight * 0.15);
+
         for (int k = 0; k < activities.size(); k++) {
             if (k >= 2) {
                 Text more = new Text("...");
@@ -160,78 +184,84 @@ public class CalendarController implements Initializable {
                 activityBox.getChildren().add(more);
                 break;
             }
+
             Calendar act = activities.get(k);
             String textValue = act.getClientName() + ", " + act.getDate().toLocalTime();
-            if (textValue.length() > 20) textValue = textValue.substring(0, 20) + "...";
+
+            if (textValue.length() > 20) {
+                textValue = textValue.substring(0, 20) + "...";
+            }
+
             final String finalTextValue = textValue;
             Text text = new Text(finalTextValue);
             text.wrappingWidthProperty().set(rectangleWidth * 0.9);
             text.setOnMouseClicked(e -> System.out.println(finalTextValue));
             activityBox.getChildren().add(text);
         }
+
         stackPane.getChildren().add(activityBox);
     }
 
+    /**
+     * Groups events by day.
+     */
     private Map<Integer, List<Calendar>> createCalendarMap(List<Calendar> activities) {
         Map<Integer, List<Calendar>> map = new HashMap<>();
+
         for (Calendar activity : activities) {
             int day = activity.getDate().getDayOfMonth();
             map.putIfAbsent(day, new ArrayList<>());
             map.get(day).add(activity);
         }
+
         return map;
     }
 
+    /**
+     * Loads events from file and filters them by month.
+     */
     private Map<Integer, List<Calendar>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
-        List<Calendar> activities = new ArrayList<>();
 
+        List<Calendar> activities = new ArrayList<>();
         EventManager.loadFromFile();
 
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
 
-        for (Logic.Services.Event e : EventManager.eventsList) {
+        for (Event e : EventManager.eventsList) {
             try {
-
-                // ---------- REPARACIÓN DE FECHA ----------
                 String rawDate = e.getDate().trim();
                 LocalDate eventDate;
 
-                if (rawDate.matches("\\d{2}/\\d{2}/\\d{4}")) {                 // 12/12/2025
-                    DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    eventDate = LocalDate.parse(rawDate, f);
-
-                } else if (rawDate.matches("\\d{4}-\\d{2}-\\d{2}")) {          // 2025-12-12
+                if (rawDate.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                    eventDate = LocalDate.parse(rawDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                }
+                else if (rawDate.matches("\\d{4}-\\d{2}-\\d{2}")) {
                     eventDate = LocalDate.parse(rawDate);
-
-                } else if (rawDate.matches("\\d{2} \\d{2}")) {                 // 12 12  (día-mes sin año)
+                }
+                else if (rawDate.matches("\\d{2} \\d{2}")) {
                     String[] p = rawDate.split(" ");
                     eventDate = LocalDate.of(year, Integer.parseInt(p[1]), Integer.parseInt(p[0]));
-
-                } else {
-                    System.out.println("Fecha inválida: " + rawDate);
+                }
+                else {
                     continue;
                 }
 
-
-                // ---------- REPARACIÓN DE HORA ----------
                 String rawTime = e.getStartTime().trim();
                 LocalTime startTime;
 
-                if (rawTime.matches("\\d{2}:\\d{2}")) {                         // 15:00
+                if (rawTime.matches("\\d{2}:\\d{2}")) {
                     startTime = LocalTime.parse(rawTime);
-
-                } else if (rawTime.matches("\\d{1}:\\d{2}")) {                  // 3:00  → 03:00
+                }
+                else if (rawTime.matches("\\d{1}:\\d{2}")) {
                     startTime = LocalTime.parse("0" + rawTime);
-
-                } else if (rawTime.matches("\\d{1,2}")) {                       // 3  → 03:00
+                }
+                else if (rawTime.matches("\\d{1,2}")) {
                     startTime = LocalTime.of(Integer.parseInt(rawTime), 0);
-
-                } else {
-                    System.out.println("Hora inválida: " + rawTime);
+                }
+                else {
                     continue;
                 }
-
 
                 ZonedDateTime fullDate = ZonedDateTime.of(eventDate, startTime, dateFocus.getZone());
 
@@ -240,11 +270,11 @@ public class CalendarController implements Initializable {
                 }
 
             } catch (Exception ex) {
-                System.out.println("Error in: " + e.getDate() + " " + e.getStartTime());
+                // Skip invalid date/time
             }
         }
 
         return createCalendarMap(activities);
     }
-
 }
+

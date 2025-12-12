@@ -11,6 +11,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 
+/**
+ * Controls the Notifications screen.
+ * Displays notifications for today.
+ */
 public class NotificationsController {
 
     @FXML
@@ -19,8 +23,10 @@ public class NotificationsController {
     @FXML
     private ListView<Notification> listViewNotifications;
 
+    /** Initializes the notifications screen. */
     @FXML
     private void initialize() {
+        // Go back to Home screen on click
         ImageHome.setOnMouseClicked(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
@@ -38,6 +44,7 @@ public class NotificationsController {
             }
         });
 
+        // Load today's notifications
         listViewNotifications.setItems(FXCollections.observableArrayList(Notification.loadTodayNotifications()));
     }
 }

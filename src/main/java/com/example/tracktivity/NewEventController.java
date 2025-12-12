@@ -11,6 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+/**
+ * Controls the New Event screen.
+ * Allows users to create a new event.
+ */
 public class NewEventController {
 
     @FXML private TextField nameField;
@@ -19,9 +23,9 @@ public class NewEventController {
     @FXML private TextField startTimeField;
     @FXML private TextField endTimeField;
 
+    /** Creates a new event and saves it. */
     @FXML
     private void createEventButton(ActionEvent event) {
-
         Event evt = new Event(
                 nameField.getText(),
                 descriptionField.getText(),
@@ -36,11 +40,13 @@ public class NewEventController {
         changeScene(event, "Events.fxml");
     }
 
+    /** Cancels creation and returns to Events screen. */
     @FXML
     private void cancelButton(ActionEvent event) {
         changeScene(event, "Events.fxml");
     }
 
+    /** Changes the current scene. */
     private void changeScene(ActionEvent event, String fxml) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxml));

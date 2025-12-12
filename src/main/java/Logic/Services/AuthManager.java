@@ -1,43 +1,52 @@
 package Logic.Services;
 
-import Logic.SubMain.App;
 import Logic.Models.User;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AuthManager extends App {
+/**
+ * Manages user registration, login, and persistence.
+ */
+public class AuthManager {
 
     private static final String FILE_PATH = "C:\\Users\\Johan\\Desktop\\ProyectoFinal\\TrackTivity\\src\\main\\resources\\Data\\users.txt";
+    private List<User> users;
 
     public AuthManager() {
         users = new ArrayList<>();
         loadUsers();
     }
 
+    /**
+     * Validates email and password data.
+     */
     public boolean validateData(String email, String password, String confirmPassword) {
         if (email == null || email.isEmpty()) return false;
         if (!email.matches("^(.+)@(.+)$")) return false;
         if (password == null || password.isEmpty()) return false;
-        if (!password.equals(confirmPassword)) return false;
-        return true;
+        return password.equals(confirmPassword);
     }
 
+    /**
+     * Checks if an email is already registered.
+     */
     public boolean emailExists(String email) {
-        for (User u : users) {
-            if (u.getEmail().equals(email)) return true;
-        }
-        return false;
+        return users.stream().anyMatch(u -> u.getEmail().equals(email));
     }
 
+    /**
+     * Registers a new user and saves to file.
+     */
     public void registerUser(String email, String password) throws IOException {
-        User user = new User(email, password);
-        users.add(user);
+        users.add(new User(email, password));
         saveUsers();
     }
 
-    @Override
+    /**
+     * Loads users from the file.
+     */
     public void loadUsers() {
         users.clear();
         File file = new File(FILE_PATH);
@@ -56,7 +65,9 @@ public class AuthManager extends App {
         }
     }
 
-    @Override
+    /**
+     * Saves users to the file.
+     */
     public void saveUsers() {
         File file = new File(FILE_PATH);
         file.getParentFile().mkdirs();
@@ -70,10 +81,10 @@ public class AuthManager extends App {
         }
     }
 
+    /**
+     * Checks if credentials match any registered user.
+     */
     public boolean login(String email, String password) {
-        for (User u : users) {
-            if (u.login(email, password)) return true;
-        }
-        return false;
+        return users.stream().anyMatch(u -> u.login(email, password));
     }
 }

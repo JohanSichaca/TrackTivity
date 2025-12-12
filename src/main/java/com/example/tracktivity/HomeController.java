@@ -14,33 +14,54 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * Controls the Home screen.
+ * Handles UI setup and navigation.
+ */
 public class HomeController {
 
-    @FXML private ImageView ImageNotifications;
+    @FXML
+    private ImageView ImageNotifications;
 
-    // Tablas de tareas
-    @FXML private TableView<Schedulable> pendingTable;
-    @FXML private TableView<Schedulable> completedTable;
+    @FXML
+    private TableView<Schedulable> pendingTable;
+    @FXML
+    private TableView<Schedulable> completedTable;
 
-    @FXML private TableColumn<Schedulable, String> pTaskCol;
-    @FXML private TableColumn<Schedulable, String> pPriorityCol;
-    @FXML private TableColumn<Schedulable, String> pExpirationCol;
+    @FXML
+    private TableColumn<Schedulable, String> pTaskCol;
+    @FXML
+    private TableColumn<Schedulable, String> pPriorityCol;
+    @FXML
+    private TableColumn<Schedulable, String> pExpirationCol;
 
-    @FXML private TableColumn<Schedulable, String> cTaskCol;
-    @FXML private TableColumn<Schedulable, String> cPriorityCol;
-    @FXML private TableColumn<Schedulable, String> cExpirationCol;
+    @FXML
+    private TableColumn<Schedulable, String> cTaskCol;
+    @FXML
+    private TableColumn<Schedulable, String> cPriorityCol;
+    @FXML
+    private TableColumn<Schedulable, String> cExpirationCol;
 
     private ObservableList<Schedulable> pendingList = FXCollections.observableArrayList();
     private ObservableList<Schedulable> completedList = FXCollections.observableArrayList();
 
-    // Tabla de eventos
-    @FXML private TableView<Event> eventTable;
-    @FXML private TableColumn<Event, String> nameCol;
-    @FXML private TableColumn<Event, String> descriptionCol;
-    @FXML private TableColumn<Event, String> dateCol;
-    @FXML private TableColumn<Event, String> startTimeCol;
-    @FXML private TableColumn<Event, String> endTimeCol;
+    @FXML
+    private TableView<Event> eventTable;
+    @FXML
+    private TableColumn<Event, String> nameCol;
+    @FXML
+    private TableColumn<Event, String> descriptionCol;
+    @FXML
+    private TableColumn<Event, String> dateCol;
+    @FXML
+    private TableColumn<Event, String> startTimeCol;
+    @FXML
+    private TableColumn<Event, String> endTimeCol;
 
+    /**
+     * Changes the current scene.
+     * Loads a given FXML file.
+     */
     private void changeScene(javafx.event.Event event, String fxml) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tracktivity/" + fxml));
@@ -53,32 +74,40 @@ public class HomeController {
         }
     }
 
+    /**
+     * Initializes UI components.
+     * Loads tasks and events.
+     */
     @FXML
     private void initialize() {
         ImageNotifications.setOnMouseClicked(e -> changeScene(e, "Notifications.fxml"));
 
-        // Cargar tareas
         TaskManager.loadFromFile();
         pendingList.clear();
         completedList.clear();
+
         for (Schedulable task : TaskManager.tasksList) {
             if (task.isStatus())
                 completedList.add(task);
             else
                 pendingList.add(task);
         }
+
         if (pendingTable != null) pendingTable.setItems(pendingList);
         if (completedTable != null) completedTable.setItems(completedList);
+
         if (pTaskCol != null) pTaskCol.setCellValueFactory(cell -> cell.getValue().taskNameProperty());
         if (pPriorityCol != null) pPriorityCol.setCellValueFactory(cell -> cell.getValue().priorityProperty());
         if (pExpirationCol != null) pExpirationCol.setCellValueFactory(cell -> cell.getValue().expirationDateProperty());
+
         if (cTaskCol != null) cTaskCol.setCellValueFactory(cell -> cell.getValue().taskNameProperty());
         if (cPriorityCol != null) cPriorityCol.setCellValueFactory(cell -> cell.getValue().priorityProperty());
         if (cExpirationCol != null) cExpirationCol.setCellValueFactory(cell -> cell.getValue().expirationDateProperty());
 
-        // Cargar eventos
         EventManager.loadFromFile();
+
         if (eventTable != null) eventTable.setItems(EventManager.eventsList);
+
         if (nameCol != null) nameCol.setCellValueFactory(cell -> cell.getValue().nameProperty());
         if (descriptionCol != null) descriptionCol.setCellValueFactory(cell -> cell.getValue().descriptionProperty());
         if (dateCol != null) dateCol.setCellValueFactory(cell -> cell.getValue().dateProperty());
@@ -86,10 +115,27 @@ public class HomeController {
         if (endTimeCol != null) endTimeCol.setCellValueFactory(cell -> cell.getValue().endTimeProperty());
     }
 
-    @FXML private void CalendarButton(ActionEvent event){ changeScene(event, "Calendar.fxml"); }
-    @FXML private void ChecklistButton(ActionEvent event){ changeScene(event, "Checklist.fxml"); }
-    @FXML private void EventsButton(ActionEvent event){ changeScene(event, "Events.fxml"); }
-    @FXML private void DashboardButton(ActionEvent event){ changeScene(event, "Dashboard.fxml"); }
-    @FXML private void AddTaskButton(ActionEvent event){ changeScene(event, "NewTask.fxml"); }
-    @FXML private void AddEventButton(ActionEvent event){ changeScene(event, "NewEvent.fxml"); }
+    /** Opens Calendar screen. */
+    @FXML
+    private void CalendarButton(ActionEvent event){ changeScene(event, "Calendar.fxml"); }
+
+    /** Opens Checklist screen. */
+    @FXML
+    private void ChecklistButton(ActionEvent event){ changeScene(event, "Checklist.fxml"); }
+
+    /** Opens Events screen. */
+    @FXML
+    private void EventsButton(ActionEvent event){ changeScene(event, "Events.fxml"); }
+
+    /** Opens Dashboard screen. */
+    @FXML
+    private void DashboardButton(ActionEvent event){ changeScene(event, "Dashboard.fxml"); }
+
+    /** Opens Add Task screen. */
+    @FXML
+    private void AddTaskButton(ActionEvent event){ changeScene(event, "NewTask.fxml"); }
+
+    /** Opens Add Event screen. */
+    @FXML
+    private void AddEventButton(ActionEvent event){ changeScene(event, "NewEvent.fxml"); }
 }
