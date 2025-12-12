@@ -65,6 +65,9 @@ public class ChecklistController {
 
         statusCol.setCellValueFactory(cell -> cell.getValue().statusProperty());
         statusCol.setCellFactory(CheckBoxTableCell.forTableColumn(statusCol));
+
+        ImageProfile.setOnMouseClicked(event -> changeScene(event, "Profile.fxml"));
+        ImageNotifications.setOnMouseClicked(event -> changeScene(event, "Notifications.fxml"));
     }
 
     private void changeScene(javafx.event.Event event, String fxml) {
