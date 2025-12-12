@@ -10,7 +10,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tracktivity.NewEventController">
    <children>
       <Line endX="1162.0" endY="-61.0" layoutX="758.0" layoutY="111.0" startX="-758.0" startY="-61.0" />
@@ -71,7 +70,7 @@
             <Font name="Century Gothic Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="dateField" layoutX="907.0" layoutY="575.0" prefHeight="41.0" prefWidth="177.0" promptText="dd/mm/yy">
+      <TextField fx:id="dateField" layoutX="907.0" layoutY="575.0" prefHeight="41.0" prefWidth="177.0" promptText="YYYY-MM-DD">
          <font>
             <Font name="Century Gothic Bold" size="12.0" />
          </font>

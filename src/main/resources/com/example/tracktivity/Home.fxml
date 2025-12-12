@@ -7,11 +7,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tracktivity.HomeController">
    <children>
@@ -117,40 +119,86 @@
             <Font name="Century Gothic Bold" size="42.0" />
          </font>
       </Label>
-      <Label layoutX="324.0" layoutY="513.0" text="Calendar">
+      <Label layoutX="324.0" layoutY="486.0" text="Calendar">
          <font>
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="1035.0" layoutY="525.0" text="Dashboard">
+      <Label layoutX="1035.0" layoutY="476.0" text="Dashboard">
          <font>
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f9ede3" height="368.0" layoutX="1041.0" layoutY="558.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 15; -fx-arc-width: 15;" width="613.0" />
-      <TableView fx:id="completedTable" layoutX="1381.0" layoutY="617.0" prefHeight="287.0" prefWidth="238.0" style="-fx-background-radius: 5;">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f9ede3" height="418.0" layoutX="1041.0" layoutY="508.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 15; -fx-arc-width: 15;" width="613.0" />
+      <TableView fx:id="completedTable" layoutX="1381.0" layoutY="544.0" prefHeight="360.0" prefWidth="238.0" style="-fx-background-radius: 5;">
          <columns>
             <TableColumn fx:id="cTaskCol" text="Name Task" />
             <TableColumn fx:id="cPriorityCol" minWidth="0.0" prefWidth="71.0" text="Priority" />
             <TableColumn fx:id="cExpirationCol" prefWidth="86.0" text="Date" />
          </columns>
       </TableView>
-      <Label layoutX="1159.0" layoutY="583.0" prefHeight="34.0" prefWidth="83.0" text="Pending">
+      <Label layoutX="1159.0" layoutY="513.0" prefHeight="34.0" prefWidth="83.0" text="Pending">
          <font>
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="1452.0" layoutY="588.0" prefHeight="23.0" prefWidth="97.0" text="Complete">
+      <Label layoutX="1452.0" layoutY="519.0" prefHeight="23.0" prefWidth="97.0" text="Complete">
          <font>
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="pendingTable" layoutX="1087.0" layoutY="620.0" prefHeight="287.0" prefWidth="238.0" style="-fx-background-radius: 5;">
+      <TableView fx:id="pendingTable" layoutX="1087.0" layoutY="544.0" prefHeight="360.0" prefWidth="238.0" style="-fx-background-radius: 5;">
          <columns>
             <TableColumn fx:id="pTaskCol" prefWidth="74.0" text="Name Task" />
             <TableColumn fx:id="pPriorityCol" minWidth="0.0" prefWidth="77.0" text="Priority" />
             <TableColumn fx:id="pExpirationCol" prefWidth="86.0" text="Date" />
          </columns>
       </TableView>
+      <Label layoutX="333.0" layoutY="533.0" prefHeight="29.0" prefWidth="27.0" text="Su">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Label>
+      <Text layoutX="631.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="####" wrappingWidth="70.6588134765625">
+         <font>
+            <Font name="Century Gothic Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="568.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+         <font>
+            <Font name="Century Gothic Bold" size="24.0" />
+         </font>
+      </Text>
+      <FlowPane hgap="10.0" layoutX="321.0" layoutY="558.0" prefHeight="368.0" prefWidth="613.0" vgap="5.0" />
+      <Label layoutX="378.0" layoutY="532.0" prefHeight="29.0" prefWidth="33.0" text="Mo">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="420.0" layoutY="532.0" prefHeight="29.0" prefWidth="33.0" text="Tu">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="450.0" layoutY="532.0" prefHeight="29.0" prefWidth="33.0" text="We">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="486.0" layoutY="532.0" prefHeight="29.0" prefWidth="33.0" text="Th">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="519.0" layoutY="532.0" prefHeight="29.0" prefWidth="33.0" text="Fr">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="873.0" layoutY="532.0" prefHeight="29.0" prefWidth="33.0" text="Sa">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

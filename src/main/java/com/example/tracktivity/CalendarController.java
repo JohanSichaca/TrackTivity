@@ -1,6 +1,8 @@
 package com.example.tracktivity;
 
 import Logic.Services.Calendar;
+import Logic.Services.Event;
+import Logic.Services.EventManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +20,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class CalendarController implements Initializable {
@@ -183,13 +188,67 @@ public class CalendarController implements Initializable {
 
     private Map<Integer, List<Calendar>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
         List<Calendar> activities = new ArrayList<>();
+
+        EventManager.loadFromFile();
+
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
-        Random random = new Random();
-        for (int i = 0; i < 50; i++) {
-            ZonedDateTime time = ZonedDateTime.of(year, month, random.nextInt(27) + 1, 16, 0, 0, 0, dateFocus.getZone());
-            activities.add(new Calendar(time, "Hans", 111111));
+
+        for (Logic.Services.Event e : EventManager.eventsList) {
+            try {
+
+                // ---------- REPARACIÓN DE FECHA ----------
+                String rawDate = e.getDate().trim();
+                LocalDate eventDate;
+
+                if (rawDate.matches("\\d{2}/\\d{2}/\\d{4}")) {                 // 12/12/2025
+                    DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    eventDate = LocalDate.parse(rawDate, f);
+
+                } else if (rawDate.matches("\\d{4}-\\d{2}-\\d{2}")) {          // 2025-12-12
+                    eventDate = LocalDate.parse(rawDate);
+
+                } else if (rawDate.matches("\\d{2} \\d{2}")) {                 // 12 12  (día-mes sin año)
+                    String[] p = rawDate.split(" ");
+                    eventDate = LocalDate.of(year, Integer.parseInt(p[1]), Integer.parseInt(p[0]));
+
+                } else {
+                    System.out.println("Fecha inválida: " + rawDate);
+                    continue;
+                }
+
+
+                // ---------- REPARACIÓN DE HORA ----------
+                String rawTime = e.getStartTime().trim();
+                LocalTime startTime;
+
+                if (rawTime.matches("\\d{2}:\\d{2}")) {                         // 15:00
+                    startTime = LocalTime.parse(rawTime);
+
+                } else if (rawTime.matches("\\d{1}:\\d{2}")) {                  // 3:00  → 03:00
+                    startTime = LocalTime.parse("0" + rawTime);
+
+                } else if (rawTime.matches("\\d{1,2}")) {                       // 3  → 03:00
+                    startTime = LocalTime.of(Integer.parseInt(rawTime), 0);
+
+                } else {
+                    System.out.println("Hora inválida: " + rawTime);
+                    continue;
+                }
+
+
+                ZonedDateTime fullDate = ZonedDateTime.of(eventDate, startTime, dateFocus.getZone());
+
+                if (fullDate.getYear() == year && fullDate.getMonthValue() == month) {
+                    activities.add(new Calendar(fullDate, e.getName(), e.hashCode()));
+                }
+
+            } catch (Exception ex) {
+                System.out.println("Error al procesar evento: " + e.getDate() + " " + e.getStartTime());
+            }
         }
+
         return createCalendarMap(activities);
     }
+
 }
