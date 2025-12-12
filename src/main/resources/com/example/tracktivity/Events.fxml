@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +12,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tracktivity.EventsController">
    <children>
@@ -116,7 +117,21 @@
             <Font name="Century Gothic Bold" size="42.0" />
          </font>
       </Label>
-      <Button fx:id="AddTask3" layoutX="1541.0" layoutY="138.0" mnemonicParsing="false" onAction="#AddTaskButton" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="+ Add Task">
+      <Button layoutX="1541.0" layoutY="138.0" mnemonicParsing="false" onAction="#AddEventButton" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="+ Add Event">
+         <font>
+            <Font name="Century Gothic Bold" size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tableView" layoutX="410.0" layoutY="242.0" prefHeight="564.0" prefWidth="1356.0">
+         <columns>
+            <TableColumn fx:id="nameCol" prefWidth="226.0" text="Name Event" />
+            <TableColumn fx:id="descriptionCol" prefWidth="515.66650390625" text="Description" />
+            <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="181.3333740234375" text="Date" />
+            <TableColumn fx:id="startTimeCol" prefWidth="236.666748046875" text="Start Time" />
+            <TableColumn fx:id="endTimeCol" prefWidth="199.6666259765625" text="End Time" />
+         </columns>
+      </TableView>
+      <Button layoutX="1008.0" layoutY="830.0" mnemonicParsing="false" onAction="#deleteEvent" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="- Delete Event">
          <font>
             <Font name="Century Gothic Bold" size="18.0" />
          </font>
