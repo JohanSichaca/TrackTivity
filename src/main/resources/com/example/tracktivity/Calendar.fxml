@@ -117,7 +117,7 @@
             <Font name="Century Gothic Bold" size="42.0" />
          </font>
       </Label>
-      <Button fx:id="AddTask1" layoutX="1635.0" layoutY="100.0" mnemonicParsing="false" onAction="#AddTaskButton" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="+ Add Task">
+      <Button fx:id="AddTask1" layoutX="1635.0" layoutY="100.0" mnemonicParsing="false" onAction="#AddEventButton" prefHeight="37.0" prefWidth="160.0" style="-fx-background-color: #ffd3b6; -fx-background-radius: 5; -fx-border-color: black; -fx-border-radius: 5;" text="+ Add Event">
          <font>
             <Font name="Century Gothic Bold" size="18.0" />
          </font>

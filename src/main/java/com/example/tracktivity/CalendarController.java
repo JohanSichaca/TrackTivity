@@ -79,8 +79,8 @@ public class CalendarController implements Initializable {
     }
 
     @FXML
-    private void AddTaskButton(ActionEvent event) {
-        changeScene(event, "NewTask.fxml");
+    private void AddEventButton(ActionEvent event) {
+        changeScene(event, "NewEvent.fxml");
     }
 
     @Override
@@ -244,7 +244,7 @@ public class CalendarController implements Initializable {
                 }
 
             } catch (Exception ex) {
-                System.out.println("Error al procesar evento: " + e.getDate() + " " + e.getStartTime());
+                System.out.println("Error in: " + e.getDate() + " " + e.getStartTime());
             }
         }
 
