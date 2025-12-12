@@ -157,7 +157,6 @@
             <Font name="Century Gothic Bold" size="24.0" />
          </font>
       </Label>
-      <FlowPane fx:id="calendar" layoutX="396.0" layoutY="214.0" prefHeight="729.0" prefWidth="1379.0" />
       <HBox alignment="CENTER" layoutX="816.0" layoutY="71.0" prefHeight="88.0" prefWidth="562.0" spacing="5.0">
          <children>
             <Button mnemonicParsing="false" onAction="#backOneMonth" prefHeight="37.0" prefWidth="34.0" text="&lt;">
@@ -180,5 +179,6 @@
                </font></Button>
          </children>
       </HBox>
+      <FlowPane fx:id="calendar" hgap="10.0" layoutX="372.0" layoutY="212.0" prefHeight="722.0" prefWidth="1413.0" vgap="5.0" />
    </children>
 </AnchorPane>
